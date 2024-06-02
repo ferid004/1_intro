@@ -4,11 +4,17 @@ import Navbar from "@/components/Navbar";
 import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }) {
+  const useLayout = Component.useLayout || ((page)=><Layout>{page}</Layout>)
+  
   return (
 
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <>
+    {
+      useLayout(
+        <Component {...pageProps} />
+      )
+    }
+    </>
 
   )
 
